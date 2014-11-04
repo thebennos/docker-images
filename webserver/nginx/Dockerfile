@@ -14,6 +14,8 @@ ADD nginx.conf /etc/nginx/
 
 ADD hhvm.conf /etc/nginx/conf.d/
 
+VOLUME /var/log/nginx/
+
 EXPOSE 80
 
 CMD nginx
