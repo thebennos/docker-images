@@ -12,6 +12,8 @@ RUN ["yum", "-y", "install", "curl", "curl-devel", "php", "php-common", "php-cur
 
 ADD config.hdf /etc/hhvm/config.conf
 
+VOLUME /var/log/hhvm/
+
 EXPOSE 8000
 
 CMD hhvm -m server -p 8000 -vServer.Type=fastcgi
