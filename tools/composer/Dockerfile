@@ -9,10 +9,10 @@ RUN apt-get update -y && \
     apt-get remove --purge curl -y && \
     apt-get clean
 
-RUN mkdir -p /data/www
+RUN mkdir -p /app
 
 WORKDIR /app
 
-ENTRYPOINT ["composer"]
+ONBUILD RUN composer self-update
 
-CMD ["install"]
+ENTRYPOINT ["php", "-dmemory_limit=1024M /usr/local/bin/composer"]
