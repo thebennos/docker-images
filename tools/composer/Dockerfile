@@ -9,10 +9,14 @@ RUN apt-get update -y && \
     apt-get remove --purge curl -y && \
     apt-get clean
 
-RUN mkdir -p /app
+VOLUME ["/app"]
 
 WORKDIR /app
 
+RUN sed -i 's/memory_limit = .*/memory_limit = '1024M'/' /etc/php.ini
+
 ONBUILD RUN composer self-update
 
-ENTRYPOINT ["php", "-dmemory_limit=1024M /usr/local/bin/composer"]
+CMD ["-"]
+
+ENTRYPOINT ["composer", "--ansi"]
