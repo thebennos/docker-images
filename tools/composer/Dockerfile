@@ -13,7 +13,7 @@ VOLUME ["/app"]
 
 WORKDIR /app
 
-RUN sed -i 's/memory_limit = .*/memory_limit = '1024M'/' /etc/php.ini
+RUN sed -i 's/memory_limit = .*/memory_limit = '1024M'/' /etc/php5/cli/php.ini
 
 ONBUILD RUN composer self-update
 
